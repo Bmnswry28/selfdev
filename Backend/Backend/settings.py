@@ -165,3 +165,16 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
 }
+
+
+#are permitted domains to access our server : for security reasons
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+    'https://localhost:3000',
+]
+#for security reasons, we have to allow only POST requests
+AUTHENTICATION_BACKENDS = [
+    'accounts.authentication.EmailBackend',  
+    'django.contrib.auth.backends.ModelBackend',  
+]

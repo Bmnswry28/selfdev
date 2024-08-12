@@ -14,9 +14,13 @@ const RegisterComponent = () => {
   const [error, setError] = useState(null);
 
 
-  const handleRegister = async () => {
+  const handleRegister = async (e) => {
+    e.preventDefault();
     try {
       const response = await axios.post('http://127.0.0.1:8000/api/register', {
+        name,
+        username,
+        phone,
         email,
         password,
       });
@@ -31,14 +35,15 @@ const RegisterComponent = () => {
   return (
     <div className="form-container">
       <h2>Register</h2>
-      <form>
+      <form onSubmit={(e) => {
+        e.preventDefault();
+        handleRegister();
+      }}>
         <Input
           type="text"
           placeholder="Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          
-
         />
         <Input
           type="text"

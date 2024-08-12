@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Input from './Input';
 import Button from './Button';
-import TextArea from './TextArea';
 import './Form.css';
 import axios from 'axios';
 
@@ -27,7 +26,10 @@ const FormComponent = () => {
   return (
     <div className="form-container">
       <h2>Login</h2>
-      <form >
+      <form onSubmit={(e) =>{
+        e.preventDefault();
+        handleLogin();
+      }}>
         <Input
           type="email"
           placeholder="Email"
